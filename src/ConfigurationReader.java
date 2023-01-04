@@ -1,13 +1,14 @@
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 public class ConfigurationReader {
     public static void main(String[] args) {
         Properties properties = new Properties();
 
-        try(InputStream inputStream = new FileInputStream("config.properties")) {
+        try(InputStream inputStream = Files.newInputStream(Paths.get("config.properties"))) {
             properties.load(inputStream);
         } catch(IOException exception) {
             exception.printStackTrace();
